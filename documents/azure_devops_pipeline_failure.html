@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Azure DevOps Pipeline Build Failure</title>
+</head>
+<body>
+
+<h1>Azure DevOps Pipeline Build Failure</h1>
+
+<h2>Description:</h2>
+<p>Azure DevOps pipeline builds can fail due to various reasons such as syntax errors in YAML files, missing dependencies, or misconfigured tasks. When a build fails, it is important to investigate the build logs and ensure that the environment is properly set up. This troubleshooting guide will provide you with the necessary steps to resolve build failures in Azure DevOps pipelines.</p>
+
+<p>Build failures can occur due to incorrect syntax in the YAML files used for defining the pipeline. YAML files are sensitive to indentation and formatting, so even a small mistake can cause the build to fail. Additionally, missing dependencies or misconfigured tasks can also lead to build failures. It is crucial to identify and address these issues to ensure successful pipeline builds.</p>
+
+<h2>Possible Error Messages:</h2>
+<p>When a build fails in Azure DevOps, you may encounter various error messages depending on the cause of the failure. Some common error messages include:</p>
+<ul>
+  <li>"Invalid YAML syntax"</li>
+  <li>"Task failed"</li>
+  <li>"Missing required package"</li>
+  <li>"Unable to find file"</li>
+</ul>
+
+<h2>Resolution Steps:</h2>
+<ol>
+  <li>Review the build logs: Start by examining the build logs to identify any error messages or warnings. Look for specific error codes or error descriptions that can help pinpoint the cause of the failure.</li>
+  <li>Check YAML syntax: If the error message indicates an issue with the YAML syntax, carefully review the YAML file for any indentation or formatting errors. Use a YAML validator or linter to ensure the syntax is correct.</li>
+  <li>Verify dependencies: If the error message suggests missing dependencies, check the pipeline configuration and ensure that all required packages or libraries are properly specified. Make sure the dependencies are available in the specified package repository.</li>
+  <li>Inspect task configurations: If the error message points to a misconfigured task, review the task configurations in the YAML file. Ensure that the task is correctly defined and all required parameters are provided.</li>
+  <li>Test in a local environment: If the issue persists, try reproducing the build failure in a local environment. This can help isolate the problem and identify any environment-specific issues. Make sure the local environment matches the target environment as closely as possible.</li>
+</ol>
+
+<h2>Next Steps:</h2>
+<p>If the above resolution steps do not resolve the build failure, consider the following next steps:</p>
+<ul>
+  <li>Seek assistance from colleagues or online communities: Reach out to your team members or the Azure DevOps community for help. Share the error messages and relevant details to get guidance from experienced users.</li>
+  <li>Contact Azure DevOps support: If the issue persists and you are unable to find a solution, contact Azure DevOps support for further assistance. Provide them with the error messages, build logs, and any other relevant information to help them troubleshoot the problem.</li>
+</ul>
+
+<h2>Reference Code:</h2>
+<p>AZDOPS11</p>
+
+<h2>Product ID:</h2>
+<p>136</p>
+
+</body>
+</html>

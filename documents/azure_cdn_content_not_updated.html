@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Azure CDN Endpoint Not Serving Updated Content</title>
+</head>
+<body>
+<h1>Azure CDN Endpoint Not Serving Updated Content</h1>
+
+<h2>Description:</h2>
+<p>Azure CDN endpoints may not serve updated content due to caching policies or propagation delays. When content is updated on the origin server, it may take some time for the changes to be reflected on the CDN endpoint. This delay can occur due to the caching rules set for the CDN or the time it takes for the updated content to propagate across the CDN network.</p>
+<p>To resolve this issue, it is important to review the caching rules and trigger purges to ensure that the updated content is served by the CDN endpoint.</p>
+
+<h2>Possible Error Messages:</h2>
+<p>There are no specific error messages associated with this issue. However, users may experience outdated content being served by the CDN endpoint even after updating the content on the origin server.</p>
+
+<h2>Resolution Steps:</h2>
+<ol>
+  <li>Review the caching rules configured for the CDN endpoint. Ensure that the caching duration is set appropriately to avoid serving outdated content for an extended period of time.</li>
+  <li>If the caching rules are set correctly, trigger a purge of the CDN endpoint to remove any cached content. This can be done through the Azure portal or by using the CDN management APIs.</li>
+  <li>After triggering the purge, monitor the CDN endpoint to ensure that the updated content is being served. It may take some time for the purged content to be refreshed across the CDN network.</li>
+  <li>If the issue persists, check the origin server to ensure that the updated content is being correctly served from there. If necessary, clear any server-side caches or verify that the content is being generated dynamically.</li>
+  <li>If all else fails, contact Azure support for further assistance. Provide them with the reference code "AZCDN13" and the product ID "138" to help expedite the troubleshooting process.</li>
+</ol>
+
+<h2>Next Steps:</h2>
+<p>After following the resolution steps, it is important to monitor the CDN endpoint to ensure that the updated content is consistently being served. If the issue reoccurs or if there are any other concerns, consider reviewing the caching policies and propagation settings in more detail or reaching out to Azure support for further guidance.</p>
+
+<h2>Reference Code:</h2>
+<p>AZCDN13</p>
+
+<h2>Product ID:</h2>
+<p>138</p>
+
+</body>
+</html>

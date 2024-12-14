@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Azure Load Balancer Backend Pool Health Probes Failing</title>
+</head>
+<body>
+<h1>Azure Load Balancer Backend Pool Health Probes Failing</h1>
+
+<h2>Description:</h2>
+<p>Backend pool health probes for Azure Load Balancer may fail due to incorrect probe configurations, misaligned application endpoints, or service unavailability. This issue can impact the availability and performance of your application. It is crucial to ensure probe accuracy and application responsiveness to resolve this problem.</p>
+<p>Incorrect probe configurations can lead to false positives or false negatives, causing the load balancer to mark healthy instances as unhealthy or vice versa. Misaligned application endpoints can result in the load balancer sending probes to incorrect endpoints, leading to failed health checks. Additionally, if the application or service is unavailable, the health probes will naturally fail.</p>
+
+<h2>Possible Error Messages:</h2>
+<ul>
+  <li>Health probe failed</li>
+  <li>Backend pool unhealthy</li>
+  <li>Probe timeout</li>
+</ul>
+
+<h2>Resolution Steps:</h2>
+<ol>
+  <li>Review and verify the probe configurations. Ensure that the probe settings, such as the probe protocol, port, and interval, are correctly configured. Make sure the probe target matches the actual endpoint of your application.</li>
+  <li>Check the health probe logs and analyze the response codes. Look for any patterns or inconsistencies that could indicate a misconfiguration or issue with the application. Adjust the probe settings accordingly.</li>
+  <li>Verify the availability and responsiveness of the application or service. Check if the application is running, the necessary ports are open, and the endpoints are correctly configured. Test the application independently to ensure it is functioning as expected.</li>
+  <li>If the health probe failures persist, consider adjusting the probe timeout value. A longer timeout may be necessary if the application requires more time to respond to the probes.</li>
+  <li>If none of the above steps resolve the issue, contact Azure support for further assistance. Provide them with the reference code (AZLB12) and product ID (137) for faster troubleshooting.</li>
+</ol>
+
+<h2>Next Steps:</h2>
+<p>After resolving the backend pool health probe failures, monitor the load balancer and application performance to ensure the issue does not reoccur. Regularly review the health probe logs and make any necessary adjustments to maintain accurate and reliable health checks.</p>
+
+<h2>Reference Code:</h2>
+<p>AZLB12</p>
+
+<h2>Product ID:</h2>
+<p>137</p>
+
+</body>
+</html>

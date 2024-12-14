@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Azure Event Hub Data Ingestion Latency</title>
+</head>
+<body>
+<h1>Azure Event Hub Data Ingestion Latency</h1>
+
+<h2>Description:</h2>
+<p>High data ingestion latency in Azure Event Hub may result from various factors such as improper partitioning, insufficient throughput units, or overloaded consumers. These issues can lead to delays in processing and delivering data to the intended recipients. To ensure optimal performance and reduce latency, it is crucial to optimize the configurations of your Azure Event Hub.</p>
+
+<p>Proper partitioning is essential for distributing the data load evenly across multiple partitions. If the data is not evenly distributed, some partitions may become overloaded while others remain underutilized, resulting in increased latency. Additionally, insufficient throughput units can limit the amount of data that can be processed, leading to delays. Lastly, overloaded consumers can struggle to keep up with the incoming data, causing latency issues.</p>
+
+<h2>Possible Error Messages:</h2>
+<p>When experiencing high data ingestion latency in Azure Event Hub, you may encounter the following error messages:</p>
+<ul>
+  <li>Error message 1: "Data ingestion latency exceeds threshold."</li>
+  <li>Error message 2: "Insufficient throughput units to handle the incoming data."</li>
+  <li>Error message 3: "Consumer group is overloaded."</li>
+</ul>
+
+<h2>Resolution Steps:</h2>
+<ol>
+  <li>Review the partitioning strategy and ensure that the data is evenly distributed across partitions. Consider using a partition key that evenly distributes the data load.</li>
+  <li>Monitor the throughput units allocated to your Azure Event Hub. If the allocated throughput units are insufficient, consider increasing the number of throughput units to handle the incoming data.</li>
+  <li>Check the consumer groups and their respective consumers. Identify any overloaded consumers and distribute the workload evenly among the consumers.</li>
+  <li>Optimize the code of your consumers to ensure efficient processing of the incoming data. Consider implementing parallel processing or optimizing resource utilization.</li>
+  <li>Regularly monitor the latency and performance of your Azure Event Hub. Use Azure Monitor or other monitoring tools to identify any potential bottlenecks or issues.</li>
+</ol>
+
+<h2>Next Steps:</h2>
+<p>After implementing the resolution steps mentioned above, monitor the data ingestion latency in Azure Event Hub to ensure that the optimizations have effectively reduced the latency. If the latency persists or new issues arise, consider reaching out to Azure support for further assistance.</p>
+
+<h2>Reference Code:</h2>
+<p>AZEH16</p>
+
+<h2>Product ID:</h2>
+<p>141</p>
+
+</body>
+</html>

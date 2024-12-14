@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Azure Application Gateway 502 Errors</title>
+</head>
+<body>
+<h1>Azure Application Gateway 502 Errors</h1>
+
+<h2>Description:</h2>
+<p>A 502 Bad Gateway error in Azure Application Gateway usually indicates backend server unavailability or misconfiguration. This error occurs when the gateway acting as a proxy receives an invalid response from an upstream server. Diagnosing this issue requires reviewing the health of the backend servers and checking the configuration settings of the gateway.</p>
+
+<h2>Possible Error Messages:</h2>
+<p>When encountering a 502 Bad Gateway error in Azure Application Gateway, you may see the following error messages:</p>
+<ul>
+  <li>"502 Bad Gateway"</li>
+  <li>"The specified CGI application encountered an error and the server terminated the process."</li>
+  <li>"502 - Web server received an invalid response while acting as a gateway or proxy server."</li>
+</ul>
+
+<h2>Resolution Steps:</h2>
+<ol>
+  <li>Check the health of the backend servers by navigating to the Azure portal and accessing the Application Gateway resource. Review the backend health status and ensure that all backend servers are healthy and responding properly.</li>
+  <li>Verify the backend server configuration. Ensure that the backend servers are correctly configured with the appropriate IP addresses, ports, and protocols. Make sure that the backend servers are accessible from the Application Gateway.</li>
+  <li>Review the gateway settings. Check the listener configuration, backend pool settings, and HTTP settings of the Application Gateway. Ensure that the listener is correctly configured to route traffic to the appropriate backend pool and that the HTTP settings match the requirements of the backend servers.</li>
+  <li>Inspect the logs. Enable diagnostic logging for the Application Gateway and review the logs to identify any potential issues or errors. Look for any specific error codes or messages that can help pinpoint the cause of the 502 error.</li>
+  <li>Consider scaling up the backend servers or increasing the capacity of the Application Gateway. If the backend servers are experiencing high traffic or resource limitations, it may result in 502 errors. Scaling up the servers or increasing the capacity of the gateway can help alleviate this issue.</li>
+</ol>
+
+<h2>Next Steps:</h2>
+<p>If the above resolution steps do not resolve the 502 Bad Gateway error, consider reaching out to Azure support for further assistance. Provide them with the reference code "AZAG10" and the product ID "132" to help expedite the troubleshooting process.</p>
+
+<h2>Reference Code:</h2>
+<p>AZAG10</p>
+
+<h2>Product ID:</h2>
+<p>132</p>
+
+</body>
+</html>

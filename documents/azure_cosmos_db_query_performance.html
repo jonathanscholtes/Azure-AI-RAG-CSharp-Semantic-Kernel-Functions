@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Azure Cosmos DB Query Performance Issues</title>
+</head>
+<body>
+<h1>Azure Cosmos DB Query Performance Issues</h1>
+
+<h2>Description:</h2>
+<p>Performance issues in Azure Cosmos DB queries may occur due to inefficient query design, indexing problems, or insufficient request units (RUs). These issues can lead to slow query execution times and poor overall application performance. To address these problems, it is important to optimize queries and configure the database properly.</p>
+
+<p>Optimizing queries involves analyzing the query patterns and making necessary adjustments to improve performance. This may include rewriting queries, adding appropriate indexing, or adjusting the RU allocation. Configuring the database properly involves setting the appropriate indexing policies, partitioning strategies, and RU allocation to ensure optimal performance.</p>
+
+<h2>Possible Error Messages:</h2>
+<ul>
+  <li>Error message 1: "Request rate is large"</li>
+  <li>Error message 2: "Query exceeded the maximum allowed execution time"</li>
+  <li>Error message 3: "Index not found for query"</li>
+</ul>
+
+<h2>Resolution Steps:</h2>
+<ol>
+  <li>Review the query design and identify any inefficient patterns or unnecessary operations. Consider using query diagnostics to identify the specific areas causing performance issues.</li>
+  <li>Ensure that the necessary indexes are created for the queries. Use the Azure Cosmos DB indexing policy to define the appropriate indexes based on the query patterns.</li>
+  <li>Check the RU allocation for the database and adjust it if necessary. Insufficient RUs can lead to slow query performance. Monitor the RU consumption using Azure portal or Cosmos DB SDKs.</li>
+  <li>Consider using partitioning to distribute the data across multiple logical partitions. This can improve query performance by allowing parallel execution of queries.</li>
+  <li>Monitor the query performance using Azure Cosmos DB metrics and logs. Analyze the query execution times, RU consumption, and any error messages to identify further optimization opportunities.</li>
+</ol>
+
+<h2>Next Steps:</h2>
+<p>After implementing the resolution steps, monitor the query performance to ensure that the optimizations have improved the overall performance. Continuously analyze the query patterns and make necessary adjustments to further enhance the performance. Regularly review the Azure Cosmos DB documentation and best practices for any updates or new features that can further optimize query performance.</p>
+
+<h2>Reference Code:</h2>
+<p>AZCOS3</p>
+
+<h2>Product ID:</h2>
+<p>125</p>
+
+</body>
+</html>

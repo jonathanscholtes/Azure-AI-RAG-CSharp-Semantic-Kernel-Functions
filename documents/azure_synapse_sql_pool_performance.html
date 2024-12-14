@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Azure Synapse SQL Pool Performance Degradation</title>
+</head>
+<body>
+<h1>Azure Synapse SQL Pool Performance Degradation</h1>
+
+<h2>Description:</h2>
+<p>Performance degradation in Azure Synapse SQL pools can result from poorly optimized queries, high concurrency, or insufficient resource allocation. This can lead to slower query execution times, increased latency, and overall reduced system performance. To address these issues, proper query tuning and workload management are necessary to improve performance.</p>
+
+<p>Query optimization involves analyzing and modifying queries to ensure they are executed in the most efficient manner possible. This includes optimizing joins, reducing unnecessary data retrieval, and utilizing appropriate indexing strategies. Workload management involves prioritizing and allocating resources to different queries and workloads based on their importance and resource requirements.</p>
+
+<h2>Possible Error Messages:</h2>
+<p>1. "Query timeout exceeded"</p>
+<p>2. "Insufficient resources to execute query"</p>
+<p>3. "High concurrency detected, please try again later"</p>
+
+<h2>Resolution Steps:</h2>
+<ol>
+  <li>Identify poorly optimized queries by analyzing query execution plans and identifying areas for improvement. Consider using tools like Azure Synapse Studio or SQL Server Management Studio for query analysis.</li>
+  <li>Optimize query performance by rewriting queries, adding appropriate indexes, and reducing unnecessary data retrieval. Consider using techniques such as query hints, query plan guides, or indexed views.</li>
+  <li>Implement workload management strategies to prioritize and allocate resources to different queries and workloads. This can involve setting query priorities, resource limits, and concurrency controls.</li>
+  <li>Monitor system performance regularly to identify any bottlenecks or resource constraints. Use tools like Azure Monitor or SQL Server Profiler to gather performance metrics and identify areas for improvement.</li>
+  <li>Regularly review and fine-tune the system configuration, including resource allocation, query execution settings, and workload management policies, based on the changing workload requirements and performance metrics.</li>
+</ol>
+
+<h2>Next Steps:</h2>
+<p>If the performance degradation persists even after following the resolution steps, consider reaching out to Azure support for further assistance. They can provide additional guidance and help troubleshoot the issue in more detail.</p>
+
+<h2>Reference Code:</h2>
+<p>AZSYN9</p>
+
+<h2>Product ID:</h2>
+<p>134</p>
+
+</body>
+</html>

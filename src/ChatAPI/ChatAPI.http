@@ -1,0 +1,7 @@
+@ChatAPI_HostAddress = http://localhost:8080
+
+GET {{ChatAPI_HostAddress}}/PostChatRequest/
+Accept: application/json
+
+###
+

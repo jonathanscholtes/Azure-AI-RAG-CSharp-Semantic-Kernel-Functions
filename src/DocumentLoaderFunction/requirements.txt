@@ -1,0 +1,11 @@
+azure-functions
+azure-identity==1.17.1
+azure-keyvault-secrets
+azure-storage-blob
+requests
+azure-search-documents==11.4.0
+azure-core==1.29.0
+beautifulsoup4
+langchain-openai
+langchain
+langchain-community

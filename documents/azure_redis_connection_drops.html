@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Azure Redis Cache Connection Drops</title>
+</head>
+<body>
+
+<h1>Azure Redis Cache Connection Drops</h1>
+
+<h2>Description:</h2>
+<p>Connection drops with Azure Redis Cache can result from exceeding connection limits, network issues, or timeouts. It is important to properly configure and monitor your Redis Cache to ensure stable connectivity.</p>
+<p>Exceeding connection limits can occur when the maximum number of connections allowed by your Redis Cache instance is reached. Network issues, such as firewall restrictions or misconfigured network settings, can also lead to connection drops. Additionally, timeouts can occur when the Redis Cache takes longer than expected to respond to a request, resulting in a dropped connection.</p>
+
+<h2>Possible Error Messages:</h2>
+<p>- "Connection dropped: exceeded connection limit"</p>
+<p>- "Unable to establish connection with Redis Cache"</p>
+<p>- "Request timed out: connection dropped"</p>
+
+<h2>Resolution Steps:</h2>
+<ol>
+  <li>Check the maximum connection limit for your Redis Cache instance. If you are consistently exceeding this limit, consider upgrading to a higher tier or scaling up your cache.</li>
+  <li>Review your network configuration and ensure that there are no firewall restrictions blocking the connection to the Redis Cache. Verify that the network settings are correctly configured.</li>
+  <li>Monitor the Redis Cache performance and identify any patterns or spikes in connection drops. This can help pinpoint potential causes and guide further troubleshooting.</li>
+  <li>Optimize your application code to handle timeouts gracefully. Implement retry logic or adjust timeout settings to prevent immediate connection drops in case of longer response times.</li>
+  <li>If the issue persists, contact Azure support for further assistance. Provide them with the reference code "AZRED17" and the product ID "142" for faster troubleshooting.</li>
+</ol>
+
+<h2>Next Steps:</h2>
+<p>After following the resolution steps, monitor the Redis Cache connection to ensure stability. Regularly check for any new error messages or connection drops. If the issue persists or new errors occur, consider reviewing the Azure Redis Cache documentation or contacting Azure support for additional guidance.</p>
+
+<h2>Reference Code:</h2>
+<p>AZRED17</p>
+
+<h2>Product ID:</h2>
+<p>142</p>
+
+</body>
+</html>
