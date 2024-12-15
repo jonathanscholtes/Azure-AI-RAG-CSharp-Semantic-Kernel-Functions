@@ -20,6 +20,7 @@ var abbreviations = loadJsonContent('abbreviations.json')
 
 
 var apiAppName = 'api-${projectName}-${environmentName}-${resourceToken}'
+var webAppName = 'web-${projectName}-${environmentName}-${resourceToken}'
 
 resource resourceGroup 'Microsoft.Resources/resourceGroups@2024-03-01' = {
   name: 'rg-${projectName}-${environmentName}-${location}-${resourceToken}'
@@ -135,7 +136,7 @@ module appServicePlanWindows 'core/host/app-service.bicep' = {
 }
 
 
-module apiWebApp 'app/api-web-app.bicep' = {
+module apiWebApp 'app/api-app.bicep' = {
   name: 'apiWebApp'
   scope: resourceGroup
   params: {
@@ -147,11 +148,25 @@ module apiWebApp 'app/api-web-app.bicep' = {
     OpenAIEndPoint: openAIService.outputs.endpoint
     identityName: managedIdentity.outputs.managedIdentityName
     AZURE_AI_SEARCH_ENDPOINT: search.outputs.endpoint
+    AZURE_COSMOSDB_ENDPOINT: database.outputs.endpoint
   }
   dependsOn:[appServicePlanWindows, monitoring,openAIService]
 }
 
 
+module reactWebApp 'app/web-app.bicep' = {
+  name: 'reactWebApp'
+  scope: resourceGroup
+  params: {
+    appServicePlanName: appServicePlanLinux.outputs.appServicePlanName
+    appServiceNameWeb: webAppName
+    location: location
+  }
+  dependsOn:[appServicePlanLinux, monitoring,openAIService]
+}
+
 output resourceGroupName string = resourceGroup.name
 output functionAppName string = loaderFunction.outputs.functionAppName
 output apiAppName string = apiAppName
+output webAppName string = webAppName
+output appServiceURL string = apiWebApp.outputs.appServiceURL

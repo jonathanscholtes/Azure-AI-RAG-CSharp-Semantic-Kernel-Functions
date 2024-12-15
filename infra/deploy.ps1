@@ -39,6 +39,8 @@ $deploymentOutputJson = $deploymentOutput | ConvertFrom-Json
 $resourceGroupName = $deploymentOutputJson.resourceGroupName.value
 $functionAppName = $deploymentOutputJson.functionAppName.value
 $apiAppName = $deploymentOutputJson.apiAppName.value
+$webAppName = $deploymentOutputJson.webAppName.value
+$appServiceURL = $deploymentOutputJson.appServiceURL.value
 
 Set-Location -Path .\scripts
 
@@ -57,6 +59,15 @@ Write-Output "Deploying Chat API from scripts"
 Write-Output "If timeout occurs, rerun the following command from scripts:"
 Write-Output ".\deploy_api.ps1 -apiAppName $apiAppName -resourceGroupName $resourceGroupName"
 & .\deploy_api.ps1 -apiAppName $apiAppName -resourceGroupName $resourceGroupName
+
+
+
+# Deploy Web Application
+Write-Output "*****************************************"
+Write-Output "Deploying Web Application from scripts"
+Write-Output "If timeout occurs, rerun the following command from scripts:"
+Write-Output ".\deploy_web.ps1 -webAppName $webAppName -resourceGroupName $resourceGroupName -apiURL $appServiceURL"
+& .\deploy_web.ps1 -webAppName $webAppName -resourceGroupName $resourceGroupName -apiURL $appServiceURL
 
 
 Set-Location -Path ..

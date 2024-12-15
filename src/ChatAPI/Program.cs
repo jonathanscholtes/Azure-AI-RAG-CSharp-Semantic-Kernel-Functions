@@ -20,7 +20,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton(serviceProvider => new CosmosClient(builder.Configuration["CosmosDb_ConnectionString"]));
+builder.Services.AddSingleton(serviceProvider => new CosmosClient(builder.Configuration["CosmosDb_Endpoint"],new DefaultAzureCredential()));
 
 
 
