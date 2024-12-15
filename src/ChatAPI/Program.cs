@@ -66,6 +66,14 @@ builder.Services.AddOpenTelemetry().UseAzureMonitor(options =>
     options.Credential = new DefaultAzureCredential();
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy => policy.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+});
+
 var app = builder.Build();
 
 // Make sure database and search index are populated with data and application is in a good startup state
@@ -77,7 +85,7 @@ await PopulateData(app.Services);
 app.UseSwagger();
 app.UseSwaggerUI();
 //}
-
+app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

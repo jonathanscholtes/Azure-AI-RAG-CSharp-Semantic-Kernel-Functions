@@ -4,3 +4,4 @@ bin/
 obj/
 infra/scripts/artifacts/loader/app.zip
 infra/scripts/artifacts/api/app.zip
+infra/scripts/artifacts/web/app.zip

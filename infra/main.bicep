@@ -161,6 +161,7 @@ module reactWebApp 'app/web-app.bicep' = {
     appServicePlanName: appServicePlanLinux.outputs.appServicePlanName
     appServiceNameWeb: webAppName
     location: location
+    appServiceNameAPI: apiAppName
   }
   dependsOn:[appServicePlanLinux, monitoring,openAIService]
 }
