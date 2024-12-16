@@ -3,13 +3,13 @@
 > Updates and modifications are being made frequently, which may impact stability or functionality. This notice will be removed once development is complete and the project reaches a stable release.
 
 
-# GenAI RAG Chat Solution with .NET, Semantic Kernel, Python, and Prompty  
+# GenAI RAG Chat Solution with .NET, Semantic Kernel Function, Python, and React JS  
 
 ## Overview  
 
-This repository provides a guide to operationalizing a Generative AI (GenAI) solution on Azure using a Retrieval-Augmented Generation (RAG) architecture. The solution includes a RAG Chat API that leverages customer data, along with technical HTML files, to assist customer support teams in troubleshooting customer issues efficiently. It utilizes Azure services such as Azure AI Search for vector storage and Azure OpenAI for model inference, all supported by a .NET-based API backend.
+This repository provides a comprehensive guide to deploying a Generative AI (GenAI) solution on Azure utilizing a Retrieval-Augmented Generation (RAG) architecture. The solution features a RAG Chat API with a web front-end that seamlessly integrates CosmosDB data and technical HTML files, enabling customer support teams to resolve issues more efficiently.
 
-Designed with a focus on security, scalability, and optimal user experience, this solution follows best practices for deploying RAG workflows on Azure. It ensures seamless integration of data retrieval and generative capabilities, providing robust, context-aware responses to customer queries while maintaining high standards for data privacy and system performance.
+Built on a .NET-based API backend, the solution leverages Azure AI Search for vector storage and Azure OpenAI for model inference. It is further enhanced with Semantic Kernel functions, Python scripts, and a React JS front-end, ensuring a robust and scalable framework for delivering accurate and context-aware customer support.
 
 ## Key Features  
 
@@ -80,7 +80,7 @@ Then, use the following PowerShell command to deploy the solution. Make sure to 
 .\deploy.ps1 -Subscription '[Subscription Name]' -Location 'southcentralus'
 ```
 
-This script will provision the necessary resources in your Azure subscription according to the specified parameters. The deployment may take upto **30 minutes** to provision all Azure resources.
+This script will provision the necessary resources in your Azure subscription according to the specified parameters. The deployment may take upto **20 minutes** to provision all Azure resources.
 
 
 ### 3. Upload Documents for Azure AI Search Indexing:

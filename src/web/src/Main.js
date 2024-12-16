@@ -17,7 +17,7 @@ class App extends Component {
     return (
       <div className="Main">
         <div className="Main-Header">
-          <Stack direction="row" spacing={10} justifyContent="space-between" sx={{paddingRight:10 ,paddingLeft:10, paddingTop:5}}>
+          <Stack direction="row" spacing={10} justifyContent="space-between" sx={{paddingRight:10 ,paddingLeft:15, paddingTop:2}}>
          
           <Stack spacing={0} >
            <Typography variant="h4" component="h1" gutterBottom>
@@ -28,7 +28,7 @@ class App extends Component {
           <Box>
           <img
                 src={require('./images/header_img.jpg')}
-                height={'230px'}
+                height={'210px'}
                 style={{ display: 'block' }}
               />
               </Box>

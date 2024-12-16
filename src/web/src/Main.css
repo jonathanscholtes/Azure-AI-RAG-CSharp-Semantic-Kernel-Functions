@@ -3,8 +3,8 @@
   font-size: calc(4px + 2vmin);
   background-color: white;
   display: grid;
-   row-gap: 10px;
-  grid-template-rows: 280px 400px auto 50px;
+   row-gap: 2px;
+  grid-template-rows: 250px 455px 165px auto;
   grid-template-columns: auto;
 }
 

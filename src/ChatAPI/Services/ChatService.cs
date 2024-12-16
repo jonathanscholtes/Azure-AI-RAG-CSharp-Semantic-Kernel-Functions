@@ -12,7 +12,7 @@ using Microsoft.SemanticKernel.Connectors.OpenAI;
 namespace ChatAPI.Services;
 
 
-public sealed class ChatService(Kernel kernel, ITextEmbeddingGenerationService embedding, ProductData productData,ChatHistory chatHistory, AISearchData aiSearch, ILogger<ChatService> logger)
+public sealed class ChatService(Kernel kernel, ITextEmbeddingGenerationService embedding, ProductData productData,ChatHistory chatHistory,ChatHistoryData chatHistoryData, AISearchData aiSearch, ILogger<ChatService> logger)
 {
     private readonly ProductData _productData = productData;
     private readonly AISearchData _aiSearch = aiSearch;
@@ -21,17 +21,30 @@ public sealed class ChatService(Kernel kernel, ITextEmbeddingGenerationService e
     private readonly Kernel _kernel = kernel;
     private readonly ITextEmbeddingGenerationService _embedding = embedding;
 
-    private readonly ChatHistory _chatHistory = chatHistory;
+    private readonly ChatHistoryData _chatHistoryData = chatHistoryData;
 
-    public async Task<string> GetResponseAsync( string question)
+     private readonly ChatHistory _chatHistory = chatHistory;
+    
+
+
+    public async Task<string> GetResponseAsync( string question, string sessionId)
     {
-         _chatHistory.AddUserMessage(question);
+         _logger.LogInformation("Chat History Count {count}",chatHistory.Count );
+        if(_chatHistory.Count ==1)
+        {
+            _logger.LogInformation("Init Chat History");
+            await _chatHistoryData.InitializeChatHistoryFromCosmosDBAsync(_chatHistory,sessionId);
+        }
+
+        await _chatHistoryData.AddMessageToHistoryAndSaveAsync(_chatHistory,sessionId,"user",question);
 
         IChatCompletionService chatCompletion = kernel.GetRequiredService<IChatCompletionService>();
         OpenAIPromptExecutionSettings openAIPromptExecutionSettings = new() 
         {
             FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
         };
+
+        
 
         ChatMessageContent  response  = await  chatCompletion.GetChatMessageContentAsync(
         _chatHistory,
@@ -40,7 +53,7 @@ public sealed class ChatService(Kernel kernel, ITextEmbeddingGenerationService e
 
         string resp = string.Join(" ",response.Items);
         _logger.LogInformation("Response {response}",resp );
-        _chatHistory.AddAssistantMessage(resp);
+        await _chatHistoryData.AddMessageToHistoryAndSaveAsync(_chatHistory,sessionId,"assistant",resp);
 
         return JsonSerializer.Serialize(new { resp });
  

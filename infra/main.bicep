@@ -148,7 +148,6 @@ module apiWebApp 'app/api-app.bicep' = {
     OpenAIEndPoint: openAIService.outputs.endpoint
     identityName: managedIdentity.outputs.managedIdentityName
     AZURE_AI_SEARCH_ENDPOINT: search.outputs.endpoint
-    AZURE_COSMOSDB_ENDPOINT: database.outputs.endpoint
   }
   dependsOn:[appServicePlanWindows, monitoring,openAIService]
 }

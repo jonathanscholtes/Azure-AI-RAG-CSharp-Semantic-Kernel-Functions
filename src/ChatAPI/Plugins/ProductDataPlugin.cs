@@ -1,10 +1,5 @@
 using Microsoft.SemanticKernel;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 using ChatAPI.Data;
-using Microsoft.SemanticKernel.ChatCompletion;
-using Azure.Storage.Blobs;
-using Azure.Identity;
 using System.ComponentModel;
 
 namespace ChatAPI.Plugins;
@@ -22,9 +17,10 @@ public class ProductDataPlugin
        
     }
 
-    [KernelFunction("product_lookup")]
-    [Description("Look up and return addition information for product using product id.")]
-    public async Task<string> GetProduct(string product_id)
+    [KernelFunction("get_azure_product_by_id")]
+    [Description("Retrieve detailed metadata and information about a specific Azure product or service using its unique product ID. This function is helpful for understanding features, pricing, and documentation links related to the Azure product.")]
+    [return: Description("detailed information about the specified Azure product.")]
+    public async Task<string> GetAzureProductDetailsById([Description("The unique identifier (ID) of the Azure product or service. Example: '123' or '127'.")]string product_id)
     {
         try
         {   
@@ -43,10 +39,12 @@ public class ProductDataPlugin
             throw;
         }
     }
+}
 
-   /*  [KernelFunction("find_product_by_name")]
+    /*[KernelFunction("lookup_azure_product_by_name")]
     [Description("Look up and return addition information for Azure products and service using product name.")]
-    public async Task<string> GetProductDataByNameAsync(string product_name)
+    [return: Description("A detail description on an Azure product")]
+    public async Task<string> GetProductDataByName([Description("The Name of the product")]string product_name)
     {
         try
         {   
@@ -65,4 +63,3 @@ public class ProductDataPlugin
             throw;
         }
     }*/
-}

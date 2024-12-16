@@ -6,7 +6,7 @@ param OpenAIEndPoint string
 param logAnalyticsWorkspaceName string
 param appInsightsName string
 param AZURE_AI_SEARCH_ENDPOINT string
-param AZURE_COSMOSDB_ENDPOINT string
+
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' existing = {
   name: appServicePlanName
@@ -61,8 +61,8 @@ resource appServiceAPI 'Microsoft.Web/sites@2022-03-01' = {
           value: '2023-05-15'
         }
         {
-          name: 'CosmosDb_Endpoint'
-          value: AZURE_COSMOSDB_ENDPOINT
+          name: 'CosmosDb_ConnectionString'
+          value: ''
         }
         {
           name: 'CosmosDb_Database'

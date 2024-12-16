@@ -12,7 +12,7 @@ var containers = [
   {
     name: 'chatcontainer' // Container for chat sessions and messages
     partitionKeyPaths: [
-      '/sessionId' // Partition on the session identifier
+      '/id' // Partition on the session identifier
     ]
     ttlValue : 86400
     indexingPolicy: {

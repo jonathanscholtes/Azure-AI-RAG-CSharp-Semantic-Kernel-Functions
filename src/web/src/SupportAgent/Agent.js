@@ -59,13 +59,13 @@ export default function SupportAgent() {
 
   return (
   
-          <Stack sx={{paddingRight:10, paddingLeft:10}}>
-            <Box sx={{ height: '300px' }}>
+          <Stack sx={{paddingRight:10, paddingLeft:10}} spacing={0}>
+            <Box sx={{ height: '355' }}>
               <div className="AgentArea">
                 <ChatLayout messages={message} />
               </div>
             </Box>
-            <Stack direction="row" spacing={0}>
+            <Stack direction="row" spacing={0} sx={{mt:2}}>
               <TextField
                 sx={{ width: '80%' }}
                 variant="outlined"

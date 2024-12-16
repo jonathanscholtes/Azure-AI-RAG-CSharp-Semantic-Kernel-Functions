@@ -11,12 +11,12 @@ function AzureFreeAccount() {
       }}
     >
      
-      <Typography variant="h5" component="h1" gutterBottom>
+      <Typography variant="h6" component="h1" gutterBottom>
         Build your next great idea in the cloud with an Azure free account
       </Typography>
 
    
-      <Typography  component="p" gutterBottom>
+      <Typography  component="p" gutterBottom sx={{ fontSize: '14px' }}>
         Get started with 12 months of free cloud computing services
       </Typography>
 

@@ -22,7 +22,7 @@ public sealed class ChatController(ILogger<ChatController> logger, ChatService c
          string input = request.Input;
         string sessionId = request.SessionId;
 
-        string result = await chatService.GetResponseAsync( input);
+        string result = await chatService.GetResponseAsync( input,sessionId);
         logger.LogInformation("Result: {Result}", result);
         return result;
     }
