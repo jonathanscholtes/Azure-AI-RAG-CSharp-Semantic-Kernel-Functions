@@ -51,6 +51,8 @@ Built on a .NET-based API backend, the solution leverages Azure AI Search for ve
 - [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/get-started-with-azure-cli) (Command Line Interface)
 - .NET 8.0 is installed and properly configured in the development environment.
 - Python 3.11.4 installed on development environment.
+- Node.js 20.11.1 installed in your development environment.
+    - Please follow the steps outlined [here](https://stochasticcoder.com/2024/03/06/langchain-rag-with-react-fastapi-cosmos-db-vectors-part-3/#h-install-node-js) to download and install Node.JS.
 - An IDE for Development, such as [VS Code](https://code.visualstudio.com/download)
 
 
@@ -62,8 +64,8 @@ Follow these steps to set up and deploy the solution:
 Begin by cloning the repository to your local machine using the following command:
 
 ```bash
-git clone https://github.com/jonathanscholtes/Azure-AI-RAG-CSharp-Prompty.git
-cd Azure-AI-RAG-CSharp-Prompty
+git clone https://github.com/jonathanscholtes/Azure-AI-RAG-CSharp-Semantic-Kernel-Functions.git
+cd Azure-AI-RAG-CSharp-Semantic-Kernel-Functions
 ```
 
 ### 2. Deploy the Solution Using Bicep:  
@@ -107,15 +109,10 @@ You can quickly verify that you have the index **azure-support** with the indexe
 
 ### 6. Validate GenAI Application
 
-Access the Azure Web App hosting the API (/swagger) by navigating to its assigned domain. Once the application loads, test its functionality by submitting the default question, "unable to connect to blob storage" for customer 5.
+Access the React Web Application using the default domain (api-chatapi-demo-[random created].azurewebsites.net) on the Azure Web App (api-chatapi-demo-[random created])  by navigating to its assigned domain. Once the application loads, test its functionality by submitting the default question, "How do I fix Access Denied with Azure Blob Storage?".
 
-![chatapi_swagger](./media/chatapi_swagger.png)
+![chatapi_swagger](./media/react_web_test.png)
 
-Upon submission, you should see the following results displayed:
-
-```json
-{"answer":"Hi there!\n\nI\u0027m sorry to hear you\u0027re having trouble accessing your Azure Blob Storage. Let\u0027s see if we can fix that. \uD83D\uDE0A\n\nHere are a few steps you can take to troubleshoot the \u0022Access Denied\u0022 issue:\n\n1. **Check Permissions**: Ensure that the user or application trying to access the Blob Storage has the necessary permissions (read, write, or delete).\n\n2. **SAS Token**: Make sure the Shared Access Signature (SAS) token you\u0027re using is valid and hasn\u0027t expired. If it has, generate a new one.\n\n3. **Authentication Credentials**: Double-check that the account name and account key are correctly entered. Ensure there are no typos.\n\n4. **Azure Active Directory (AAD)**: If you\u0027re using AAD, confirm that the user or application has the appropriate roles and permissions assigned.\n\n5. **Firewall and Virtual Network Settings**: Verify that the required IP addresses or ranges are allowed to access the Blob Storage.\n\nIf you follow these steps and the issue persists, it might be a good idea to reach out to Azure support for more specific guidance.\n\nReference Code: AZBLOB5\n\nFeel free to ask if you have any more questions.\n\nBest,\n[Your Name]","context":[{"reference_code":"AZBLOB5","title":"Azure Blob Storage Access Denied","content":"Title: Azure Blob Storage Access Denied\nMain Heading: Azure Blob Storage Access Denied\n\nDescription:\nAccessing Azure Blob Storage may fail due to incorrect permissions, invalid SAS tokens, or missing authentication credentials. This can result in an \u0022Access Denied\u0022 error message. Resolving this issue involves ensuring that the user or application has appropriate access rights to the Blob Storage account. It is important to check the permissions, SAS tokens, and authentication credentials to ensure they are correctly configured.\nIf the above resolution steps do not resolve the issue, consider reaching out to Azure support for further assistance. They can provide more specific guidance based on your specific scenario and help troubleshoot any underlying issues.\nAZBLOB5\n\nPossible Error Messages:\n\u0022Access Denied\u0022\n\u0022Permission Denied\u0022\n\u0022Invalid SAS Token\u0022\n\u0022Authentication Failed\u0022\nVerify the permissions assigned to the user or application accessing the Blob Storage. Ensure that the necessary permissions are granted, such as read, write, or delete access.\nCheck the SAS token used for authentication. Make sure it is valid and has not expired. Generate a new SAS token if needed.\nEnsure that the authentication credentials, such as the account name and account key, are correctly entered. Double-check for any typos or mistakes.\nIf using Azure Active Directory (AAD) authentication, verify that the user or application has the necessary permissions and roles assigned in AAD.\nIf the issue persists, check the firewall and virtual network settings for the Blob Storage account. Ensure that the necessary IP addresses or ranges are allowed to access the storage.\n\nResolution Steps:\nVerify the permissions assigned to the user or application accessing the Blob Storage. Ensure that the necessary permissions are granted, such as read, write, or delete access.\nCheck the SAS token used for authentication. Make sure it is valid and has not expired. Generate a new SAS token if needed.\nEnsure that the authentication credentials, such as the account name and account key, are correctly entered. Double-check for any typos or mistakes.\nIf using Azure Active Directory (AAD) authentication, verify that the user or application has the necessary permissions and roles assigned in AAD.\nIf the issue persists, check the firewall and virtual network settings for the Blob Storage account. Ensure that the necessary IP addresses or ranges are allowed to access the storage.\n\nNext Steps:\nIf the above resolution steps do not resolve the issue, consider reaching out to Azure support for further assistance. They can provide more specific guidance based on your specific scenario and help troubleshoot any underlying issues.\nAZBLOB5\n\nReference Code: AZBLOB5\n"}]}
-```
 
 ## Clean-Up
 
@@ -144,7 +141,7 @@ To permanently delete an Azure OpenAI or other Azure AI service, follow [these s
 This project is licensed under the [MIT License](MIT.md), granting permission for commercial and non-commercial use with proper attribution.
 
 ## Support
-For any questions or issues, please [open an issue](https://github.com/jonathanscholtes/Azure-AI-RAG-CSharp-Prompty/issues) on GitHub or reach out to the project maintainers.
+For any questions or issues, please [open an issue](https://github.com/jonathanscholtes/Azure-AI-RAG-CSharp-Semantic-Kernel-Functions/issues) on GitHub or reach out to the project maintainers.
 
 ## Disclaimer
 This demo application is intended solely for educational and demonstration purposes. It is provided "as-is" without any warranties, and users assume all responsibility for its use.
