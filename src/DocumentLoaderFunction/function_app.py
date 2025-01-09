@@ -6,6 +6,7 @@ import traceback
 from bs4 import BeautifulSoup
 import azure.functions as func
 from azure.identity import DefaultAzureCredential
+from azure.storage.blob import BlobServiceClient
 from azure.core.credentials import AzureKeyCredential
 from azure.search.documents import SearchClient
 from azure.search.documents.indexes import SearchIndexClient
@@ -54,10 +55,7 @@ def Loader(myblob: func.InputStream):
 
         # Configuration for Azure Cognitive Search
         search_endpoint = environ["AZURE_AI_SEARCH_ENDPOINT"]
-        #search_api_key = environ["AZURE_AI_SEARCH_API_KEY"]
         index_name = environ["AZURE_AI_SEARCH_INDEX"]
-
-        #AzureKeyCredential(token)
 
         # Create SearchClient
         search_client = SearchClient(endpoint=search_endpoint, index_name=index_name, credential=credential)
@@ -79,12 +77,28 @@ def Loader(myblob: func.InputStream):
 
         AISearchIndexLoader(embeddings,search_client,search_index_client,index_name,logging).populate_search_index(json_data,text_data)
 
+        credential = DefaultAzureCredential()
+
+        AZURE_STORAGE_URL = environ.get("BlobTriggerConnection__blobServiceUri")
+
+         # Delete the blob after processing
+        blob_service_client = BlobServiceClient(AZURE_STORAGE_URL, credential=credential) 
+        container_name, blob_name = "load", myblob.name.split('/')[-1]  # Adjust based on the blob path structure
+        
+
+        blob_client_completed = blob_service_client.get_blob_client(container="completed", blob=blob_name)
+        blob_client_completed.upload_blob(blob_content,overwrite=True)
+
     except json.JSONDecodeError as e:
         logging.error(f"Failed to parse blob content as JSON: {e}")
         logging.error(traceback.format_exc())
     except Exception as e:
         logging.error(f"loader Failed: {e}")
         logging.error(traceback.format_exc())
+
+    blob_client = blob_service_client.get_blob_client(container=container_name, blob=blob_name)
+    blob_client.delete_blob()
+    logging.info(f"Deleted blob: {myblob.name}")
 
     
 
@@ -114,13 +128,6 @@ class AISearchIndexLoader:
             self.logger.info("AI Search index not found, creating index...")
 
         # Create the index if it doesn't exist
-        #semantic_settings=SemanticConfiguration(
-                #            name="default",
-                #            prioritized_fields=SemanticPrioritizedFields(
-                #                title_field=SemanticField(field_name="title"),
-                #                content_fields=[SemanticField(field_name="content")]
-                #            )                        
-                #),
         if not index_exists:
 
             semantic_config =SemanticConfiguration(
@@ -175,7 +182,7 @@ class AISearchIndexLoader:
 
         except Exception as ex:
             self.logger.error("Error in AI Search: %s", ex)
-
+            raise ex
 
 
 def html_to_json(html_content):
