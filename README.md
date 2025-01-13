@@ -11,6 +11,8 @@ This repository provides a comprehensive guide to deploying a Generative AI (Gen
 
 Built on a .NET-based API backend, the solution leverages Azure AI Search for vector storage and Azure OpenAI for model inference. It is further enhanced with Semantic Kernel functions, Python scripts, and a React JS front-end, ensuring a robust and scalable framework for delivering accurate and context-aware customer support.
 
+For a detailed understanding of the project, please refer to the article: [Enhance Customer Support with Semantic Kernel and Azure OpenAI](https://stochasticcoder.com/2025/01/09/enhance-customer-support-with-semantic-kernel-and-azure-openai/)
+
 ## Key Features  
 
 - **RAG Architecture**: Implements a Retrieval-Augmented Generation workflow, combining generative AI with vectorized retrieval for contextually enriched responses.  
