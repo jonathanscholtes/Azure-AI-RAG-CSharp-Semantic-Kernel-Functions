@@ -4,90 +4,54 @@ param accountName string
 param location string = resourceGroup().location
 param tags object = {}
 
+// Define the database for the chat application
 var database = {
-  name: 'chatdatabase' // Database for chat application
+  name: 'chatdatabase' 
 }
 
+// Define the containers for the database
 var containers = [
   {
-    name: 'chatcontainer' // Container for chat sessions and messages
+    name: 'chathistory' // Container for storing chat sessions and messages (chat history)
     partitionKeyPaths: [
-      '/id' // Partition on the session identifier
+      '/id' 
     ]
-    ttlValue : 86400
+    ttlValue: 86400 // Time-to-live (TTL) for automatic deletion of data after 24 hours (86400 seconds)
     indexingPolicy: {
-      automatic: true
-      indexingMode: 'consistent'
-      
+      automatic: true // Automatically index new data
+      indexingMode: 'consistent' // Ensure data is indexed immediately
       includedPaths: [
         {
-          path: '/sessionId/?'
+          path: '/sessionId/?' 
         }
       ]
       excludedPaths: [
         {
-          path: '/*'
+          path: '/*' // Exclude all other paths from indexing
         }
       ]
     }
     vectorEmbeddingPolicy: {
-      vectorEmbeddings: []
+      vectorEmbeddings: [] // Placeholder for future vector embedding configuration
     }
   }
-  
-  {name: 'products' // Container for chat sessions and messages
-  partitionKeyPaths: [
-    '/id' // Partition on the customer identifier
-  ]
-  ttlValue : 0
-  indexingPolicy: {
-    automatic: true
-    indexingMode: 'consistent'
-    includedPaths: [
-      {
-        path: '/*'
-      }
-    ]
-  }
-  vectorEmbeddingPolicy: {
-    vectorEmbeddings: []
-  }
-}
   {
-    name: 'cachecontainer' // Container for chat sessions and messages
+    name: 'products' // Container for storing product-related data
     partitionKeyPaths: [
-      '/id' // Partition on the session identifier
+      '/id' 
     ]
-    ttlValue : 0
+    ttlValue: 0 // TTL disabled for this container (data persists indefinitely)
     indexingPolicy: {
-      automatic: true
-      indexingMode: 'consistent'
+      automatic: true // Automatically index all data
+      indexingMode: 'consistent' // Ensure data is indexed immediately
       includedPaths: [
         {
-          path: '/*'
-        }
-      ]
-      excludedPaths: [
-        {
-          path: '/vectors/?'
-        }
-      ]
-      vectorIndexes: [
-        {
-          path: '/vectors'
-          type: 'quantizedFlat'
+          path: '/*' // Index all paths for maximum query flexibility
         }
       ]
     }
     vectorEmbeddingPolicy: {
-      vectorEmbeddings: [
-        {
-          path: '/vectors'
-          dataType: 'float32'
-          dimensions: 1536
-          distanceFunction: 'cosine'
-        }
-      ]
+      vectorEmbeddings: [] // Placeholder for future vector embedding configuration
     }
   }
 ]

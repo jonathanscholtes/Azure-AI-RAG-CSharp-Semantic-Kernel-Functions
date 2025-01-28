@@ -74,7 +74,7 @@ resource appServiceAPI 'Microsoft.Web/sites@2022-03-01' = {
         } 
         {
           name: 'CosmosDb_ChatContainer'
-          value: 'chatcontainer'
+          value: 'chathistory'
         }        
         {
           name: 'AZURE_AI_SEARCH_ENDPOINT'

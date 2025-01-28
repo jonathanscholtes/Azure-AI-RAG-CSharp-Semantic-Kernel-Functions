@@ -30,6 +30,7 @@ public sealed class ChatService(Kernel kernel, ITextEmbeddingGenerationService e
     public async Task<string> GetResponseAsync( string question, string sessionId)
     {
          _logger.LogInformation("Chat History Count {count}",chatHistory.Count );
+
         if(_chatHistory.Count ==1)
         {
             _logger.LogInformation("Init Chat History");
@@ -45,7 +46,6 @@ public sealed class ChatService(Kernel kernel, ITextEmbeddingGenerationService e
         };
 
         
-
         ChatMessageContent  response  = await  chatCompletion.GetChatMessageContentAsync(
         _chatHistory,
         executionSettings: openAIPromptExecutionSettings,
@@ -60,25 +60,4 @@ public sealed class ChatService(Kernel kernel, ITextEmbeddingGenerationService e
     }
 
 
-    private async Task<byte[]> GetImagesAsBytes(string url)
-    {       
-            var blobClient = new BlobClient(new Uri(url),new DefaultAzureCredential());
-            using var stream = new MemoryStream();
-            await blobClient.DownloadToAsync(stream);
-            return stream.ToArray();
-       
-    }
-    private async Task<List<string>> GetImagesAsBase64Async(List<string> imageBlobUrls)
-    {
-        var tasks = imageBlobUrls.Select(async url =>
-        {
-            var blobClient = new BlobClient(new Uri(url),new DefaultAzureCredential());
-            using var stream = new MemoryStream();
-            await blobClient.DownloadToAsync(stream);
-            return "data:image/png;base64," + Convert.ToBase64String(stream.ToArray());
-        });
-
-        var base64Images = await Task.WhenAll(tasks);
-        return base64Images.ToList();
-    }
 }

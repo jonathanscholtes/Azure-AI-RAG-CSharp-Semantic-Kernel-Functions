@@ -8,7 +8,7 @@ namespace ChatAPI.Data;
 
 
 public class ChatMessage
-{   
+{
     public string id { get; set; }
     public string sessionid { get; set; }
     public string message { get; set; }
@@ -18,19 +18,19 @@ public class ChatMessage
 
 public sealed class ChatHistoryData(CosmosClient cosmosClient, ILogger<ProductData> logger, IConfiguration config)
 {
-    // Assume a Cosmos DB client is injected for operations
-     private readonly CosmosClient _cosmosClient = cosmosClient;
+
+    private readonly CosmosClient _cosmosClient = cosmosClient;
     private readonly ILogger<ProductData> logger = logger;
     private readonly string _databaseName = config["CosmosDb_Database"]!;
 
     private readonly string _containerName = config["CosmosDb_ChatContainer"]!;
-   
+
 
     private async Task AddUserMessageAsync(string sessionId, string message)
     {
         var chatMessage = new ChatMessage
         {
-            id = Guid.NewGuid().ToString(), 
+            id = Guid.NewGuid().ToString(),
             sessionid = sessionId,
             message = message,
             role = "user",
@@ -45,7 +45,7 @@ public sealed class ChatHistoryData(CosmosClient cosmosClient, ILogger<ProductDa
     {
         var chatMessage = new ChatMessage
         {
-            id = Guid.NewGuid().ToString(), 
+            id = Guid.NewGuid().ToString(),
             sessionid = sessionId,
             message = message,
             role = "assistant",
@@ -56,37 +56,35 @@ public sealed class ChatHistoryData(CosmosClient cosmosClient, ILogger<ProductDa
     }
 
     public async Task AddMessageToHistoryAndSaveAsync(ChatHistory chatHistory, string sessionId, string role, string content)
-{
-    // Add message to ChatHistory
-    if (role == "user")
     {
-        chatHistory.AddUserMessage(content);
-        await AddUserMessageAsync(sessionId,content);
-    }
-    else if (role == "assistant")
-    {
-        chatHistory.AddAssistantMessage(content);
-        await AddAssistantMessageAsync(sessionId,content);
-    }
+        if (role == "user")
+        {
+            chatHistory.AddUserMessage(content);
+            await AddUserMessageAsync(sessionId, content);
+        }
+        else if (role == "assistant")
+        {
+            chatHistory.AddAssistantMessage(content);
+            await AddAssistantMessageAsync(sessionId, content);
+        }
 
-}
+    }
     public async Task InitializeChatHistoryFromCosmosDBAsync(ChatHistory chatHistory, string sessionId)
-{
-    var messages = await GetMessagesBySessionIdAsync(sessionId);
-
-    foreach (var message in messages)
     {
-        if (message.role == "user")
+        var messages = await GetMessagesBySessionIdAsync(sessionId);
+
+        foreach (var message in messages)
         {
-            chatHistory.AddUserMessage(message.message);
-        }
-        else if (message.role == "assistant")
-        {
-            chatHistory.AddAssistantMessage(message.message);
+            if (message.role == "user")
+            {
+                chatHistory.AddUserMessage(message.message);
+            }
+            else if (message.role == "assistant")
+            {
+                chatHistory.AddAssistantMessage(message.message);
+            }
         }
     }
-
-}
 
     private async Task<List<ChatMessage>> GetMessagesBySessionIdAsync(string sessionId)
     {
@@ -96,13 +94,12 @@ public sealed class ChatHistoryData(CosmosClient cosmosClient, ILogger<ProductDa
             .WithParameter("@sessionId", sessionId)
         );
 
-       var messages = new List<ChatMessage>();
+        var messages = new List<ChatMessage>();
 
-        // Iterate through pages of results
         while (query.HasMoreResults)
         {
             var response = await query.ReadNextAsync();
-            messages.AddRange(response); // Add results from the current page
+            messages.AddRange(response);
         }
 
         return messages;
