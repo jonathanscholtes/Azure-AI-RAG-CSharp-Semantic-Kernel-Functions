@@ -107,7 +107,27 @@ You can quickly verify that you have the index **azure-support** with the indexe
 ![indexes](./media/azure_ai_search_indexes.png)
 
 
+### 5. Setting Up the Environment for the API
+The Azure Cosmos DB connection string is not incorporated into the API environment variables during the deployment process, so it will need to be added manually. Through the Azure portal, we can modify the Environment variables of our newly created API.
 
+#### Azure Cosmos DB Connection String
+Access the connection string by selecting Keys under Settings. Copy the string value.
+
+![cosmos_db_keys](./media/cosmos_db_keys.png)
+
+
+#### Adding Environment Variables
+
+In-order for our Semantic Kernel function to be able to access product information we will need to add the Azure Cosmos DB connection string to the Environment variables.
+
+  - Select **Environment** variables under Settings
+  - Ensure the **App settings** tab is selected
+  - Add the connection string value to **CosmosDb_ConnectionString**
+ - Click **Apply**
+
+
+![api_env_variables](./media/api_env_variables.png)
+ 
 
 ### 6. Validate GenAI Application
 
